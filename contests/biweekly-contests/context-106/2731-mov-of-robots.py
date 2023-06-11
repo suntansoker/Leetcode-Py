@@ -47,3 +47,26 @@ nums.length == s.length
 s consists of 'L' and 'R' only
 nums[i] will be unique.
 '''
+
+
+class Solution:
+    def sumDistance(self, nums: List[int], s: str, d: int) -> int:
+        n = len(nums)
+        MOD = 10 ** 9 + 7
+        for i in range(n):
+            if s[i] == 'L':
+                nums[i] -= d % MOD
+            else:
+                nums[i] += d % MOD
+
+        nums.sort()
+        prefix = [0] * n
+        prefix[0] = nums[0]
+        for i in range(1, n):
+            prefix[i] = (prefix[i-1] + nums[i]) % MOD
+
+        ans = 0
+        for i in range(1, n):
+            ans += (i*nums[i] - prefix[i-1]) % MOD
+
+        return ans % MOD
