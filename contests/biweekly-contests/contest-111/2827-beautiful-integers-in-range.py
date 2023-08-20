@@ -37,7 +37,7 @@ Explanation: There are 0 beautiful integers in the given range.
 
 Constraints:
 
-0 < low <= high <= 109
+0 < low <= high <= 10^9
 0 < k <= 20
 '''
 
